@@ -74,10 +74,32 @@ http://localhost:7900/fx?type=raid&property=bungalow&amount=15
 
 Firebot and the game must run on the same PC, since the endpoint only listens on `localhost`.
 
+## Ready-made redeems for Firebot
+
+The `firebot/` folder has two Firebot custom scripts that set everything up for you. Copy them into your Firebot profile's `scripts` folder, make sure custom scripts are enabled in Firebot's settings, and run each once with a **Run Custom Script** effect.
+
+| Script | What it creates |
+|---|---|
+| `schedule1-redeems.js` | Ten channel rewards (five helps, five hurts), created disabled and editable in Firebot, each calling this mod and posting a chat line. Also a "Schedule I" sort tag, two events that unpause those rewards while your stream category is Schedule I and pause them otherwise, and a mod-only `!s1sync` command that applies the same check on demand. |
+| `schedule1-mods-command.js` | A `!mods` chat command that links to the mods. |
+
+`schedule1-redeems.js` has a **Dry Run** option, on by default: it changes nothing and writes a report next to the script saying what it would create. Untick it to create the rewards. Costs, cooldowns and the property used by Supply Drop and Gang Raid are parameters or can be edited in Firebot afterwards. Running it again skips anything that already exists.
+
+```mermaid
+flowchart LR
+    A[Stream category changes] --> B{Category is Schedule I?}
+    C[Stream starts] --> B
+    D[!s1sync] --> B
+    B -->|yes| E[Unpause rewards tagged Schedule I]
+    B -->|no| F[Pause rewards tagged Schedule I]
+```
+
+The script loads three of Firebot's internal managers (channel rewards, sort tags, events) that scripts are not officially given. It was written and tested against Firebot 5.67 and may need adjusting for other versions.
+
 ## Install
 
 1. Install [MelonLoader](https://melonwiki.xyz/) 0.7.x into Schedule I and start the game once.
-2. Build the mod (see below) or take a built `ChatFx.dll`.
+2. Download `ChatFx.dll` from the [latest release](https://github.com/purplehaxttv/schedule1-chat-fx/releases/latest), or build it yourself (see below).
 3. Copy it into `Schedule I\Mods\`.
 4. Start the game. The console prints `Chat FX listening on http://localhost:7900/fx`.
 
@@ -112,3 +134,7 @@ Tested on game version 0.4.7f12.
 
 - [schedule1-supply-run](https://github.com/purplehaxttv/schedule1-supply-run): a courier that moves your own stock between properties.
 - [schedule1-fixed-cash-drops](https://github.com/purplehaxttv/schedule1-fixed-cash-drops): bigger payouts from broken ATMs, Cuke machines and trash recyclers.
+
+## License
+
+MIT. See [LICENSE](LICENSE). Not affiliated with TVGS, the developer of Schedule I.

@@ -12,3 +12,6 @@ obj/
 
 # Local tooling
 .claude/
+
+# Local copies of Firebot data
+firebot/*.backup-*.json

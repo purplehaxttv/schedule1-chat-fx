@@ -12,7 +12,7 @@ using Il2CppScheduleOne.Property;
 using Il2CppScheduleOne.Storage;
 using Il2CppScheduleOne.ObjectScripts;
 
-[assembly: MelonInfo(typeof(ChatFx.Core), "Chat FX", "1.8.0", "purplehaxttv")]
+[assembly: MelonInfo(typeof(ChatFx.Core), "Chat FX", "1.0.0", "purplehaxttv")]
 [assembly: MelonGame("TVGS", "Schedule I")]
 
 namespace ChatFx
