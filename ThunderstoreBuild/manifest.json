@@ -1,0 +1,9 @@
+{
+  "name": "ChatFX",
+  "version_number": "1.0.0",
+  "website_url": "https://github.com/purplehaxttv/schedule1-chat-fx",
+  "description": "Stream interaction: a local endpoint in the game lets Firebot chat commands and channel-point redeems help or hurt the players (money, police, supply drops, raids).",
+  "dependencies": [
+    "LavaGang-MelonLoader-0.7.3"
+  ]
+}
